@@ -1,0 +1,466 @@
+---
+title: "Laikipia_manuscript"
+author: "Arnold Lambisia"
+date: "8/19/2022"
+output: html_document
+---
+
+
+\tiny
+```{r _Lineage_location_gender, echo=FALSE, warning=FALSE, results='asis'}
+library(tidyverse)
+library(here)
+library(readxl)
+library(arsenal)
+library(tinytex)
+library(rio)
+library(lubridate)
+library(DT)  # creating html table
+library(kableExtra) # creating html and pdf tables
+library(pander)
+
+LKP_dta <- import("DATA1.xlsx")%>% 
+  mutate(date_collected = as.Date(date_collected, "%d/%m/%Y"))
+
+
+#table1
+print(
+  summary(
+  tableby(includeNA(VOC_lineage)~ includeNA(gender)+
+           includeNA(age_group2)+
+          includeNA(`IP/OP`)+
+          includeNA(patient_status)+
+          includeNA(justification)+
+          includeNA(vaccination_status),
+          data = LKP_dta,
+          control = tableby.control(test = F)),
+           labelTranslations = list("includeNA(gender)" = "Gender",
+                                    "includeNA(age_group2)" = "Age group",
+                           "includeNA(patient_status)" = "Clinical Presentation",
+                           "includeNA(`IP/OP`)" = "Hospital attendance",
+                           "includeNA(justification)" = "Reason for Testing",
+                           "includeNA(vaccination_status)" = "Vaccination status")
+  )
+)
+
+
+#comparing the distribution between VOC_lineages
+#age group
+LKP_dta %>% 
+  mutate(VOC_lineage = as.factor(VOC_lineage),
+         age_group2 = as.factor(age_group2)) %>% 
+  select(VOC_lineage, age_group2) %>% 
+  filter(!is.na(age_group2)) %>% 
+  table() %>% 
+  chisq.test()
+
+#####Gender
+LKP_dta %>% 
+  mutate(VOC_lineage = as.factor(VOC_lineage),
+         gender = as.factor(gender)) %>% 
+  select(VOC_lineage, gender) %>% 
+  filter(!is.na(gender)) %>% 
+  table() %>% 
+  chisq.test() 
+
+#####patient status
+LKP_dta %>% 
+  mutate(VOC_lineage = as.factor(VOC_lineage),
+         patient_status = as.factor(patient_status)) %>% 
+  select(VOC_lineage, patient_status) %>% 
+  table() %>% 
+  chisq.test() 
+
+#####IP/OP
+LKP_dta %>% 
+  mutate(VOC_lineage = as.factor(VOC_lineage),
+         `IP/OP` = as.factor(`IP/OP`)) %>% 
+  select(VOC_lineage, `IP/OP`) %>% 
+  filter(!is.na(`IP/OP`)) %>% 
+  table() %>% 
+  chisq.test() 
+
+#####justification
+LKP_dta %>% 
+  mutate(VOC_lineage = as.factor(VOC_lineage),
+         justification = as.factor(justification)) %>% 
+  select(VOC_lineage, justification) %>% 
+  table() %>% 
+  chisq.test() 
+
+#####vaccination_status
+LKP_dta %>% 
+  mutate(VOC_lineage = as.factor(VOC_lineage),
+         vaccination_status = as.factor(vaccination_status)) %>% 
+  select(VOC_lineage, vaccination_status) %>% 
+  table() %>% 
+  chisq.test()
+
+
+
+# Table 2
+print(
+  summary(
+  tableby(includeNA(VOC_lineage)~ includeNA(cough_7)+
+           includeNA(sore_throat10)+
+            includeNA(SOB_2)+
+            includeNA(chest_pain6)+
+            includeNA(runny_nose13)+
+            includeNA(muscular_pain3)+
+          includeNA(joint_pain12)+
+            includeNA(abdominal_pain9)+
+            includeNA(nausea_8)+
+            includeNA(diarrhoea_5)+
+            includeNA(fever_1)+
+            includeNA(general_weakness4)+
+            includeNA(headache_11)+
+            includeNA(irritation_14),
+          data = LKP_dta,
+          control = tableby.control(test = F)),
+  labelTranslations = list("includeNA(cough_7)" = "Cough",
+                                    "includeNA(sore_throat10)" = "Sore throat",
+                           "includeNA(SOB_2)" = "Shortness of breath",
+                           "includeNA(chest_pain6)" = "Chest pain",
+                           "includeNA(runny_nose13)" = "Runny nose",
+                           "includeNA(muscular_pain3)" = "Muscular pain",
+                           "includeNA(joint_pain12)" = "Joint pain",
+                           "includeNA(abdominal_pain9)" = "Abdominal pain",
+                           "includeNA(nausea_8)" = "Nausea",
+                           "includeNA(diarrhoea_5)" = "Diarrhoea",
+                           "includeNA(fever_1)" = "Fever",
+                           "includeNA(general_weakness4)" = "General weakness",
+                           "includeNA(headache_11)" = "Headache",
+                           "includeNA(irritation_14)" = "Irritation")
+  )
+)
+
+```
+
+##calculating p values
+
+```{r}
+
+#age median
+summary(LKP_dta$age)
+
+#Alpha median age
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Alpha") %>% 
+summary()
+
+#Delta median age
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Delta") %>% 
+summary()
+
+#Omicron median age
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Omicron") %>% 
+summary()
+
+
+##Table 3
+#This is a scri[t used for calculating the odds ratios forSupplementary table 1
+  ##A 2 by 2 table was created after populating the numbers by tabyl from the data and the fisher.test function was used to caluctae the odds ratio. An option would be to use 
+      #the oddsratio function from epitools and specify the method as fisher (example in line 29)
+#load libraries
+library(epitools)
+library(tidyverse)
+library(rio)
+
+##import data
+LKP_dta <- import("DATA1.xlsx") %>% 
+  mutate(date_collected = as.Date(date_collected, "%d/%m/%Y"))
+
+#####OR_supplementary table 1
+#calculate odds ratio per VOC relative to other VOCs
+#### For the Alpha VOC relative to Delta + Omicron
+
+#Cough
+tab_cough <- tabyl(LKP_dta, VOC_lineage, cough_7) #can be used to tabulate the counts per symptom per VOC
+tab_cough
+
+
+OR_Alpha_cough_table<-matrix(c(2,6,72,17),nrow = 2, ncol = 2)
+OR_Alpha_cough_table  
+fisher.test(OR_Alpha_cough_table) #calculate odds ratio
+oddsratio(OR_Alpha_cough_table, method = "fisher") ###This can also be used instead for all the other symptoms
+
+#chest pain
+OR_Alpha_cp_table<-matrix(c(0,8,17,72),nrow = 2, ncol = 2)
+OR_Alpha_cp_table  
+fisher.test(OR_Alpha_cp_table) #calculate odds ratio
+    ##No cases for alpha - OR 0
+
+#shortness of breath
+OR_Alpha_sob_table<-matrix(c(1,7,20,69),nrow = 2, ncol = 2)
+OR_Alpha_sob_table  
+fisher.test(OR_Alpha_sob_table) #calculate odds ratio
+
+#fever
+OR_Alpha_fever_table<-matrix(c(1,7,18,71),nrow = 2, ncol = 2)
+OR_Alpha_fever_table  
+fisher.test(OR_Alpha_fever_table) #calculate odds ratio
+
+#irritation
+OR_Alpha_irritation_table<-matrix(c(1,7,1,88),nrow = 2, ncol = 2)
+OR_Alpha_irritation_table  
+fisher.test(OR_Alpha_irritation_table) #calculate odds ratio
+
+
+
+######## For the Delta VOC relative to Alpha + Omicron
+#cough
+OR_Delta_cough_table<-matrix(c(39,13,35,10),nrow = 2, ncol = 2)
+OR_Delta_cough_table  
+fisher.test(OR_Delta_cough_table) #calculate odds ratio
+
+#chest pain
+OR_Delta_cp_table<-matrix(c(17,35,0,45),nrow = 2, ncol = 2)
+OR_Delta_cp_table  
+fisher.test(OR_Delta_cp_table) #calculate odds ratio
+
+#sore throat
+OR_Delta_STR_table<-matrix(c(7,45,28,17),nrow = 2, ncol = 2)
+OR_Delta_STR_table  
+fisher.test(OR_Delta_STR_table) #calculate odds ratio
+
+#shortness of breath
+OR_Delta_sob_table<-matrix(c(20,32,1,44),nrow = 2, ncol = 2)
+OR_Delta_sob_table  
+fisher.test(OR_Delta_sob_table) #calculate odds ratio
+
+#muscular pain
+OR_Delta_MP_table<-matrix(c(12,40,0,45),nrow = 2, ncol = 2)
+OR_Delta_MP_table  
+fisher.test(OR_Delta_MP_table) #calculate odds ratio 
+    ####No cases in other VOCs, hence estimated as infinity
+#joint pain
+OR_Delta_JP_table<-matrix(c(2,50,2,43),nrow = 2, ncol = 2)
+OR_Delta_JP_table  
+fisher.test(OR_Delta_JP_table) #calculate odds ratio
+
+#General weakness
+OR_Delta_GW_table<-matrix(c(17,35,1,44),nrow = 2, ncol = 2)
+OR_Delta_GW_table  
+fisher.test(OR_Delta_GW_table) #calculate odds ratio
+
+#fever
+OR_Delta_fever_table<-matrix(c(16,36,3,42),nrow = 2, ncol = 2)
+OR_Delta_fever_table  
+fisher.test(OR_Delta_fever_table) #calculate odds ratio
+
+#headache
+OR_Delta_headache_table<-matrix(c(13,39,11,34),nrow = 2, ncol = 2)
+OR_Delta_headache_table  
+fisher.test(OR_Delta_headache_table) #calculate odds ratio
+
+#irritation
+OR_Delta_irritation_table<-matrix(c(1,51,1,44),nrow = 2, ncol = 2)
+OR_Delta_irritation_table  
+fisher.test(OR_Delta_irritation_table)#calculate odds ratio
+ 
+############ For the Omicron VOC relative to Alpha + Delta
+#Cough
+OR_Omicron_cough_table<-matrix(c(33,4,41,19),nrow = 2, ncol = 2)
+OR_Omicron_cough_table  
+fisher.test(OR_Omicron_cough_table) #calculate odds ratio
+
+#chest pain
+OR_Omicron_cp_table<-matrix(c(0,37,17,43),nrow = 2, ncol = 2)
+OR_Omicron_cp_table  
+fisher.test(OR_Omicron_cp_table) #calculate odds ratio
+
+#sore throat
+OR_Omicron_STR_table<-matrix(c(28,9,7,53),nrow = 2, ncol = 2)
+OR_Omicron_STR_table  
+fisher.test(OR_Omicron_STR_table) #calculate odds ratio
+
+#joint pain
+OR_Omicron_JP_table<-matrix(c(2,35,2,58),nrow = 2, ncol = 2)
+OR_Omicron_JP_table  
+fisher.test(OR_Omicron_JP_table) #calculate odds ratio
+
+#abdominal pain
+OR_Omicron_AP_table<-matrix(c(1,36,0,60),nrow = 2, ncol = 2)
+OR_Omicron_AP_table  
+fisher.test(OR_Omicron_AP_table) #calculate odds ratio
+
+#general weakness
+OR_Omicron_GW_table<-matrix(c(1,36,17,43),nrow = 2, ncol = 2)
+OR_Omicron_GW_table  
+fisher.test(OR_Omicron_GW_table) #calculate odds ratio
+
+#fever
+OR_Omicron_fever_table<-matrix(c(2,35,16,44),nrow = 2, ncol = 2)
+OR_Omicron_fever_table  
+fisher.test(OR_Omicron_fever_table) #calculate odds ratio
+
+#cheadache
+OR_Omicron_headache_table<-matrix(c(11,26,13,47),nrow = 2, ncol = 2)
+OR_Omicron_headache_table  
+fisher.test(OR_Omicron_headache_table) #calculate odds ratio
+
+#irritation
+OR_Omicron_irritation_table<-matrix(c(1,51,1,44),nrow = 2, ncol = 2)
+OR_Omicron_irritation_table  
+fisher.test(OR_Omicron_irritation_table) #calculate odds ratio
+
+
+##############Supplementary table 1
+##sorethroat
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Delta" | VOC_lineage == "Omicron") %>% 
+  dplyr::select(VOC_lineage, sore_throat10) %>% 
+  table() %>% view()
+
+OR_sorethroat_table<-matrix(c(7,45, 28,9),nrow = 2, ncol = 2)
+OR_sorethroat_table  
+fisher.test(OR_sorethroat_table)
+
+#cough
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Delta" | VOC_lineage == "Omicron") %>% 
+  dplyr::select(VOC_lineage,cough_7) %>% 
+  table() %>% view()
+OR_cough_table<-matrix(c(0,52, 33,4),nrow = 2, ncol = 2)
+OR_cough_table  
+oddsratio(OR_cough_table, method = "fisher")
+
+#chest pain
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Delta" | VOC_lineage == "Omicron") %>% 
+  dplyr::select(VOC_lineage, chest_pain6) %>% 
+  table() %>% view()
+OR_CP_table<-matrix(c(17,35,2,35),nrow = 2, ncol = 2)
+OR_CP_table  
+
+fisher.test(OR_CP_table)
+
+#fever
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Delta" | VOC_lineage == "Omicron") %>% 
+  dplyr::select(VOC_lineage, fever_1) %>% 
+  table() %>% view()
+OR_fever_table<-matrix(c(16,36,2,35),nrow = 2, ncol = 2)
+OR_fever_table  
+fisher.test(OR_fever_table)
+
+#muscular pain
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Delta" | VOC_lineage == "Omicron") %>% 
+  dplyr::select(VOC_lineage, muscular_pain3) %>% 
+  table() %>% view()
+OR_MP_table<-matrix(c(12,40, 0,37),nrow = 2, ncol = 2)
+OR_MP_table  
+fisher.test(OR_MP_table)
+
+#headache
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Delta" | VOC_lineage == "Omicron") %>% 
+  dplyr::select(VOC_lineage, headache_11) %>% 
+  table() %>% view()
+OR_headache_table<-matrix(c(13,39, 11,26),nrow = 2, ncol = 2)
+OR_headache_table  
+oddsratio(OR_headache_table, method = "fisher")
+
+#nausea
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Delta" | VOC_lineage == "Omicron") %>% 
+  dplyr::select(VOC_lineage,nausea) %>% 
+  table() %>% view()
+OR_nausea_table<-matrix(c(5,47,0,37),nrow = 2, ncol = 2)
+OR_nausea_table  
+oddsratio(OR_nausea_table, method = "fisher")
+
+#general weakness
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Delta" | VOC_lineage == "Omicron") %>% 
+  dplyr::select(VOC_lineage,general_weakness4) %>% 
+  table() %>% view()
+OR_gweak_table<-matrix(c(17,35,1,36),nrow = 2, ncol = 2)
+OR_gweak_table  
+oddsratio(OR_gweak_table, method = "fisher")
+
+#joint pain
+LKP_dta %>% 
+  dplyr::filter(VOC_lineage == "Delta" | VOC_lineage == "Omicron") %>% 
+  dplyr::select(VOC_lineage, joint_pain12) %>% 
+  table() %>% view()
+OR_jpain_table<-matrix(c(2,50,2,35),nrow = 2, ncol = 2)
+OR_jpain_table  
+oddsratio(OR_jpain_table, method = "fisher")
+
+##adjusted odds ratio
+###subset data
+symptom_data2 <- LKP_dta %>% 
+  filter(VOC_lineage == "Omicron" | VOC_lineage == "Delta") %>% 
+mutate(VOC_lineage = factor(VOC_lineage, levels = c("Omicron", "Delta"), ordered = T))
+
+
+###Cough
+fit_cough <- glm(VOC_lineage ~ cough_7 +age+gender+vaccination_status+justification, data = symptom_data2, family = binomial)
+summary(fit_cough) # display results
+confint(fit_cough) # 95% CI for the coefficients
+exp(coef(fit_cough)) # exponentiated coefficients
+exp(confint(fit_cough)) # 95% CI for exponentiated coefficients
+
+#chest pain
+fit_chest_pain <- glm(VOC_lineage ~ chest_pain6+age+gender+vaccination_status+justification, data = symptom_data2, family = binomial)
+summary(fit_chest_pain) # display results
+confint(fit_chest_pain) # 95% CI for the coefficients
+exp(coef(fit_chest_pain)) # exponentiated coefficients
+exp(confint(fit_chest_pain)) # 95% CI for exponentiated coefficients
+
+#sore throat
+fit_sorethroat <- glm(VOC_lineage ~ sore_throat10+age+gender+vaccination_status+justification, data = symptom_data2, family = binomial)
+summary(fit_sorethroat) # display results
+confint(fit_sorethroat) # 95% CI for the coefficients
+exp(coef(fit_sorethroat)) # exponentiated coefficients
+exp(confint(fit_sorethroat)) # 95% CI for exponentiated coefficients
+
+#headache
+fit_headache <- glm(VOC_lineage ~ headache11+age+gender+vaccination_status+justification, data = symptom_data2, family = binomial)
+summary(fit_headache) # display results
+confint(fit_headache) # 95% CI for the coefficients
+exp(coef(fit_headache)) # exponentiated coefficients
+exp(confint(fit_headache)) # 95% CI for exponentiated coefficients
+
+#shortness of breath
+fit_shortness_breath <- glm(VOC_lineage ~ SOB_2 +age+gender+vaccination_status + justification, data = symptom_data2, family = binomial)
+summary(fit_shortness_breath) # display results
+confint(fit_shortness_breath) # 95% CI for the coefficients
+exp(coef(fit_shortness_breath)) # exponentiated coefficients
+exp(confint(fit_shortness_breath)) # 95% CI for exponentiated coefficients
+
+#fever
+fit_fever <- glm(VOC_lineage ~ fever_1 +age+gender+vaccination_status+justification, data = symptom_data2, family = binomial)
+summary(fit_fever) # display results
+confint(fit_fever) # 95% CI for the coefficients
+exp(coef(fit_fever)) # exponentiated coefficients
+exp(confint(fit_fever)) # 95% CI for exponentiated coefficients
+
+#general_wekness
+fit_general_weakness <- glm(VOC_lineage ~ general_weakness4 +age+gender+vaccination_status+justification, data = symptom_data2, family = binomial)
+summary(fit_general_weakness) # display results
+confint(fit_general_weakness) # 95% CI for the coefficients
+exp(coef(fit_general_weakness)) # exponentiated coefficients
+exp(confint(fit_general_weakness)) # 95% CI for exponentiated coefficients
+
+##joint pain
+fit_joint_pain <- glm(VOC_lineage ~ joint_pain12 +age+gender+vaccination_status+justification, data = symptom_data2, family = binomial)
+summary(fit_joint_pain) # display results
+confint(fit_joint_pain) # 95% CI for the coefficients
+exp(coef(fit_joint_pain)) # exponentiated coefficients
+exp(confint(fit_joint_pain)) # 95% CI for exponentiated coefficients
+
+
+
+
+
+
+
+
+```
+
+

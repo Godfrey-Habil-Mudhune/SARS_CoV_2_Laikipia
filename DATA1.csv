@@ -1,0 +1,100 @@
+﻿id,lineage,VOC_lineage,date_collected,IP/OP,sequelae,vaccination_status,gender,age,age_group2,fever_1,SOB_2,muscular_pain3,general_weakness4,diarrhoea_5,chest_pain6,cough_7,nausea_8,abdominal_pain9,sore_throat10,headache_11,joint_pain12,runny_nose13,irritation_14,justification,patient_status
+L1,AY.16,Delta,06/07/2021,,,Not vaccinated,M,3,0-15,N,N,N,N,N,N,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L2,BA.1,Omicron,21/12/2021,OP,,Not vaccinated,M,13,0-15,N,N,N,N,N,N,N,N,N,N,N,N,N,N,No data,No data
+L3,AY.16,Delta,19/08/2021,,,Not vaccinated,M,14,0-15,N,N,Y,Y,N,N,N,N,N,Y,N,N,N,N,Surveillance,Symptomatic
+L4,AY.16,Delta,06/07/2021,,,Not vaccinated,F,15,0-15,Y,N,N,N,N,Y,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L5,BA.1,Omicron,20/12/2021,OP,,Fully vaccinated,F,18,16-30,N,N,N,N,N,N,Y,N,N,N,Y,N,N,N,presented to health facility,Symptomatic
+L6,B.1.617.2,Delta,14/07/2021,,,Not vaccinated,M,19,16-30,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L7,BA.1,Omicron,19/12/2021,OP,,Partially vaccinated,F,19,16-30,Y,N,N,N,N,N,Y,N,N,Y,Y,Y,N,N,presented to health facility,Symptomatic
+L8,BA.1,Omicron,21/12/2021,OP,,Not vaccinated,F,22,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L9,AY.46,Delta,09/07/2021,OP,,Not vaccinated,F,23,16-30,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L10,AY.16,Delta,19/08/2021,,,Not vaccinated,F,23,16-30,N,N,Y,N,N,N,Y,N,N,N,Y,N,N,N,Surveillance,Symptomatic
+L11,BA.1.1,Omicron,16/12/2021,OP,,Not vaccinated,M,23,16-30,Y,N,N,N,N,N,Y,N,N,Y,Y,Y,N,N,presented to health facility,Symptomatic
+L12,AY.16,Delta,12/06/2021,,,No data,M,24,16-30,Y,N,N,N,N,N,Y,N,N,N,Y,N,N,N,Contact with a confirmed case,Symptomatic
+L13,BA.1,Omicron,17/12/2021,OP,,Not vaccinated,M,24,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L14,BA.1,Omicron,19/12/2021,OP,,Not vaccinated,F,24,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L15,BA.1.1,Omicron,15/12/2021,OP,,Fully vaccinated,M,25,16-30,N,N,N,N,N,N,N,N,N,Y,N,N,N,N,No data,Symptomatic
+L16,BA.1,Omicron,20/12/2021,OP,,Fully vaccinated,M,25,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L17,BA.1,Omicron,16/12/2021,OP,,Not vaccinated,F,26,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L18,BA.1,Omicron,21/12/2021,OP,,Not vaccinated,F,26,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L19,B.1.1.7,Alpha,24/05/2021,,,Not vaccinated,M,27,16-30,N,N,N,N,N,N,N,N,N,N,N,N,N,N,Surveillance,Asymptomatic
+L20,AY.16,Delta,12/06/2021,,,No data,F,27,16-30,N,Y,N,N,N,N,Y,N,N,N,Y,N,N,N,Contact with a confirmed case,Symptomatic
+L21,AY.16,Delta,06/07/2021,,,Not vaccinated,M,27,16-30,Y,N,N,N,N,Y,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L22,BA.1,Omicron,15/12/2021,IP ,,Not vaccinated,F,27,16-30,N,N,N,N,N,N,N,N,N,N,N,N,N,N,No data,No data
+L23,AY.46,Delta,13/08/2021,OP,,Not vaccinated,M,28,16-30,N,N,Y,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L24,BA.1,Omicron,20/12/2021,OP,,Fully vaccinated,M,28,16-30,N,N,N,N,N,N,Y,N,N,N,Y,N,N,N,presented to health facility,Symptomatic
+L25,BA.1,Omicron,20/12/2021,,,No data,F,28,16-30,N,N,N,N,N,N,Y,N,N,Y,Y,N,N,N,presented to health facility,Symptomatic
+L26,BA.1,Omicron,21/12/2021,OP,,Fully vaccinated,F,28,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L27,BA.1,Omicron,21/12/2021,OP,,Fully vaccinated,M,28,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L28,BA.1,Omicron,21/12/2021,OP,,Fully vaccinated,F,28,16-30,N,N,N,N,N,Y,Y,N,N,N,N,N,N,N,presented to health facility,Symptomatic
+L29,AY.16,Delta,03/08/2021,,,Not vaccinated,F,29,16-30,N,N,Y,Y,N,N,N,N,N,N,Y,N,N,N,Contact with a confirmed case,Symptomatic
+L30,BA.1,Omicron,17/12/2021,OP,,Fully vaccinated,F,29,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L31,B.1.1.7,Alpha,24/05/2021,,,Not vaccinated,M,30,16-30,N,N,N,N,N,N,N,N,N,N,N,N,N,N,Surveillance,Asymptomatic
+L32,B.1.617.2,Delta,26/07/2021,OP,,Not vaccinated,M,30,16-30,N,N,N,N,N,N,N,N,N,N,N,N,N,N,Surveillance,No data
+L33,BA.1,Omicron,12/12/2021,,,No data,M,30,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L34,BA.1,Omicron,18/12/2021,IP ,,Not vaccinated,F,30,16-30,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L35,AY.46,Delta,14/07/2021,,,Not vaccinated,M,31,31-45,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L36,AY.46,Delta,02/08/2021,,,Not vaccinated,F,31,31-45,N,N,N,N,N,Y,N,N,N,Y,N,N,N,Y,Contact with a confirmed case,Symptomatic
+L37,B.1.1.7,Alpha,24/05/2021,,,Not vaccinated,M,32,31-45,N,N,N,N,N,N,N,N,N,N,N,N,N,N,Surveillance,Asymptomatic
+L38,AY.46,Delta,01/08/2021,OP,,Not vaccinated,M,32,31-45,N,N,N,N,N,N,N,N,N,N,N,N,N,N,Contact with a confirmed case,No data
+L39,AY.46,Delta,12/08/2021,,,Not vaccinated,F,32,31-45,N,N,N,N,N,Y,Y,Y,N,N,N,N,N,N,presented to health facility,Symptomatic
+L40,BA.1,Omicron,20/12/2021,OP,,Fully vaccinated,F,32,31-45,N,N,N,Y,N,Y,Y,N,N,Y,Y,N,N,N,presented to health facility,Symptomatic
+L41,BA.1,Omicron,15/12/2021,OP,,Fully vaccinated,F,33,31-45,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,No data,Symptomatic
+L42,BA.1.1,Omicron,16/12/2021,OP,,Not vaccinated,M,33,31-45,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L43,BA.1,Omicron,17/12/2021,OP,,Fully vaccinated,F,33,31-45,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L44,BA.1,Omicron,19/12/2021,OP,,Fully vaccinated,F,33,31-45,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L45,BA.1,Omicron,24/12/2021,OP,,Fully vaccinated,F,33,31-45,N,N,N,N,N,N,Y,N,N,N,Y,N,N,N,presented to health facility,Symptomatic
+L46,AY.46,Delta,15/07/2021,,,Not vaccinated,M,34,31-45,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L47,BA.1,Omicron,21/12/2021,OP,,Fully vaccinated,F,34,31-45,N,N,N,N,N,N,Y,N,Y,Y,Y,N,N,N,presented to health facility,Symptomatic
+L48,B.1.1.7,Alpha,24/05/2021,,,Not vaccinated,M,35,31-45,N,N,N,N,N,N,Y,N,N,N,N,N,N,N,Surveillance,Symptomatic
+L49,BA.1,Omicron,21/12/2021,OP,,Not vaccinated,M,35,31-45,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L50,AY.46,Delta,18/06/2021,OP,,Partially vaccinated,F,37,31-45,Y,N,N,Y,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L51,B.1.617.2,Delta,31/07/2021,OP,,Not vaccinated,M,37,31-45,N,N,Y,Y,N,N,N,N,N,N,N,Y,N,N,Contact with a confirmed case,Symptomatic
+L52,AY.46,Delta,02/08/2021,,,Not vaccinated,F,37,31-45,N,N,Y,Y,N,N,N,N,N,N,Y,N,N,N,Contact with a confirmed case,Symptomatic
+L53,B.1.1.7,Alpha,24/05/2021,,,Not vaccinated,M,38,31-45,N,N,N,N,N,N,N,N,N,N,N,N,N,Y,Surveillance,Symptomatic
+L54,AY.16,Delta,11/08/2021,OP,"numbness of hands, lower limb pain, abdominal pain, diarrhoea ",Not vaccinated,F,38,31-45,N,N,N,Y,N,N,N,N,N,Y,Y,N,N,N,presented to health facility,Symptomatic
+L55,AY.46,Delta,14/09/2021,IP ,difficulty in breathing,Not vaccinated,M,38,31-45,N,N,N,Y,N,Y,Y,N,N,N,N,N,N,N,Surveillance,Symptomatic
+L56,BA.1,Omicron,16/12/2021,OP,,Partially vaccinated,M,38,31-45,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L57,AY.46,Delta,19/12/2021,,,No data,M,38,31-45,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L58,BA.1,Omicron,20/12/2021,OP,,Fully vaccinated,F,38,31-45,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L59,AY.16,Delta,15/07/2021,OP,,Not vaccinated,M,39,31-45,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L60,AY.46,Delta,11/08/2021,OP,"acute bronchiolitis, candidiasis, cataract, gastritis, perhperal neuropathy, arthritis",Fully vaccinated,F,39,31-45,N,N,N,Y,N,Y,N,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L61,B.1.617.2,Delta,16/06/2021,IP ,,No data,F,40,31-45,N,Y,N,N,N,Y,N,N,N,N,N,N,N,N,presented to health facility,Symptomatic
+L62,AY.16,Delta,16/07/2021,OP,,Not vaccinated,M,40,31-45,N,N,N,N,N,N,N,N,N,N,N,N,N,N,Surveillance,No data
+L63,AY.46,Delta,16/09/2021,OP,"tinnitus, headache",Not vaccinated,F,40,31-45,N,N,N,Y,N,Y,Y,N,N,N,N,N,N,N,Surveillance,Symptomatic
+L64,AY.16,Delta,05/07/2021,OP,,Not vaccinated,F,41,31-45,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,presented to health facility,Symptomatic
+L65,BA.1,Omicron,20/12/2021,OP,,Fully vaccinated,F,42,31-45,N,N,N,N,N,N,Y,N,N,N,Y,N,N,N,presented to health facility,Symptomatic
+L66,B.1.1.7,Alpha,24/05/2021,,,Not vaccinated,M,43,31-45,N,N,N,N,N,N,N,N,N,N,N,N,N,N,Surveillance,Asymptomatic
+L67,BA.1,Omicron,21/12/2021,OP,,Fully vaccinated,F,43,31-45,N,N,N,N,N,N,Y,N,N,Y,Y,N,N,N,presented to health facility,Symptomatic
+L68,BA.1,Omicron,20/12/2021,OP,,Fully vaccinated,M,45,31-45,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L69,B.1.1.7,Alpha,23/06/2021,,,Not vaccinated,M,46,46_60,N,N,N,N,N,N,N,N,N,N,N,N,N,N,No data,No data
+L70,AY.16,Delta,02/08/2021,OP,,Not vaccinated,M,46,46_60,N,Y,Y,N,N,N,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L71,AY.16,Delta,02/08/2021,,,Not vaccinated,F,47,46_60,N,Y,Y,Y,N,N,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L72,BA.1,Omicron,21/12/2021,OP,,Fully vaccinated,M,47,46_60,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L73,BA.1,Omicron,21/12/2021,OP,,Fully vaccinated,M,47,46_60,N,N,N,N,N,N,N,N,N,N,N,N,N,N,No data,No data
+L74,BA.1,Omicron,20/12/2021,OP,,Not vaccinated,M,48,46_60,N,N,N,N,N,N,Y,N,N,N,Y,N,N,N,presented to health facility,Symptomatic
+L75,AY.16,Delta,19/08/2021,OP,,Not vaccinated,F,49,46_60,N,N,Y,N,N,N,Y,N,N,N,Y,N,N,N,Surveillance,Symptomatic
+L76,AY.16,Delta,14/09/2021,OP,,Not vaccinated,F,49,46_60,N,N,N,Y,N,Y,Y,N,N,N,N,N,N,N,Surveillance,Symptomatic
+L77,AY.16,Delta,24/09/2021,IP ,,Not vaccinated,F,49,46_60,N,N,N,N,N,N,N,N,N,N,N,N,N,N,No data,No data
+L78,B.1.1.7,Alpha,25/06/2021,,,Not vaccinated,M,52,46_60,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,presented to health facility,Symptomatic
+L79,AY.16,Delta,29/06/2021,,,Not vaccinated,F,52,46_60,N,N,N,N,N,N,N,N,N,N,N,N,N,N,No data,No data
+L80,AY.46,Delta,07/07/2021,,,Not vaccinated,F,52,46_60,N,Y,Y,Y,N,Y,Y,N,N,N,Y,N,N,N,No data,Symptomatic
+L81,AY.46,Delta,31/07/2021,OP,,Not vaccinated,F,52,46_60,N,N,N,Y,N,N,Y,Y,N,N,N,N,Y,N,presented to health facility,Symptomatic
+L82,AY.16,Delta,12/08/2021,,,Not vaccinated,F,52,46_60,N,N,N,N,N,N,Y,Y,N,N,Y,N,N,N,presented to health facility,Symptomatic
+L83,AY.16,Delta,17/06/2021,OP, ,Not vaccinated,F,53,46_60,N,Y,N,N,N,N,Y,N,N,N,Y,N,N,N,presented to health facility,Symptomatic
+L84,B.1.617.2,Delta,14/07/2021,,,Not vaccinated,F,53,46_60,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L85,AY.16,Delta,26/05/2021,OP,,No data,M,55,46_60,N,Y,N,N,N,N,Y,N,N,N,N,Y,N,N,presented to health facility,Symptomatic
+L86,AY.16,Delta,29/06/2021,,,Partially vaccinated,M,56,46_60,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,presented to health facility,Symptomatic
+L87,AY.16,Delta,22/09/2021,OP,,Partially vaccinated,M,58,46_60,N,Y,N,N,N,Y,Y,N,N,N,N,N,N,N,Surveillance,Symptomatic
+L88,AY.44,Delta,13/09/2021,OP,,Not vaccinated,M,60,46_60,Y,N,N,N,N,Y,Y,Y,N,N,N,N,N,N,Surveillance,Symptomatic
+L89,AY.51,Delta,31/07/2021,OP,neuralgia and neuritis,Not vaccinated,F,61,>60,N,N,Y,N,N,Y,Y,N,N,N,Y,N,N,N,Surveillance,Symptomatic
+L90,AY.16,Delta,13/09/2021,OP,,Not vaccinated,F,62,>60,N,N,N,Y,N,Y,Y,N,N,N,N,N,N,N,Surveillance,Symptomatic
+L91,AY.16,Delta,24/09/2021,IP ,,Not vaccinated,F,63,>60,Y,N,N,Y,N,Y,Y,N,N,N,Y,N,N,N,Surveillance,Symptomatic
+L92,AY.16,Delta,25/06/2021,,,Not vaccinated,F,64,>60,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,presented to health facility,Symptomatic
+L93,BA.1,Omicron,21/12/2021,OP,,Not vaccinated,M,65,>60,N,N,N,N,N,N,Y,N,N,Y,N,N,N,N,presented to health facility,Symptomatic
+L94,AY.116,Delta,23/09/2021,OP,,Not vaccinated,M,80,>60,N,Y,N,N,N,Y,Y,Y,N,N,N,N,N,N,Surveillance,Symptomatic
+L95,AY.58,Delta,02/08/2021,OP,,Not vaccinated,M,84,>60,N,N,Y,Y,N,Y,Y,N,N,N,Y,N,N,N,Contact with a confirmed case,Symptomatic
+L96,AY.16,Delta,03/08/2021,,,Not vaccinated,M,93,>60,N,Y,N,Y,N,N,Y,N,N,N,N,N,N,N,Contact with a confirmed case,Symptomatic
+L97,AY.16,Delta,25/06/2021,,,Not vaccinated,,,No data,Y,Y,N,N,N,N,Y,N,N,N,N,N,N,N,presented to health facility,Symptomatic
+,,,,,,,,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,,,,,,,,
